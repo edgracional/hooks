@@ -22,7 +22,7 @@ const UseState = (props) => {
                         onClick={() => setCount(count +1)}>+1</button>
                     <button className="btn"
                     /* outra forma de fazer usando calback */
-                        onClick={() => setCount(currect => + 1000)}>+1000</button>
+                        onClick={() => setCount(currect => + 1000)}>+1000 </button>
                 </div>
             
             </div>
