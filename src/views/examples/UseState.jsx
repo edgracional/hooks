@@ -33,7 +33,8 @@ const UseState = (props) => {
         <SectionTitle title="Exercício #02"/>
         {/*usamos input para controlar a evolução do input*/}
         <input type="text" className="input" 
-            value={name} oneChange={e => setName(e.target.value)} />
+            value={name} onChange={e => setName(e.target.value)} />
+
             <span className='text'>{name}</span>          
         </div>
     )
