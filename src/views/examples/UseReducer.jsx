@@ -1,55 +1,10 @@
 import React, { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 
-/* quando a aplicação carrega pela primeira vez ira carregar este estado incial - 
-a partir do estado inicial você vai evoluir este estado -  evoluindo o valor do 
-número, colecar o usuário logado..etc;*/
-
-/* Tem outras formas de evoluir o estado não apenas dentro de uma função */
-const initialState = {
-    /* estado inicial */
-    cart: [{}],
-    products:[{}, {}], //poderia ter uma série de atributos {}
-    user: null,
-    // foco...
-    number: 0,
-}
-/* reducer vai receber o estado atual, ou seja a ultima versão disponível a mais 
-atual do estado e vai receber também uma action - uma ação, toda ação tem nome, 
-tem título...*/
-function reducer(state, action){
-    /* switch que é o padrão - mais comum */
-    /* toda ação tem pelo menos o atributo titulo - action.type */
-    switch(action.type){
-        /* criar uma ação adicionar 2 */
-        case 'numberAdd2':
-            /* retornar um novo objeto que vai representa o estado (return), 
-            clonar o estado atual (...state) e 
-            criar um novo atributo number (number: state.number + 2) */
-            return {...state, number: state.number +2}
+import { initialState, reducer } from '../../store';
+import { numberAdd2, login } from '../../store/actions'
 
 
-        /* Desafio */
-        case 'numberMulti7':
-            return {...state, number: state.number * 7 }
-        case 'numberDiv25':
-            return {...state, number: state.number / 25 }
-        case 'numberInt':
-            return {...state, number: parseInt(state.number) }
-        case 'numberAddN':
-            return {...state, number: state.number + action.payload }
-
-
-
-        /* Vai retornar um valor default - caso você tenha passado uma ação 
-        que não foi mapeada retorne o estdo atual (return) */  
-        
-        case 'login':
-            return { ...state, user: { name: action.payload } }
-        default:
-            return state
-    }
-}
 
 const UseReducer = (props) => {
     /* Criando o useReduce - criar o estado e a função dispatch (disparar uma ação) - chamar o = 
@@ -73,10 +28,10 @@ const UseReducer = (props) => {
                 <div>
                     <button 
                         className="btn"
-                        onClick={() => dispatch({ type: 'login', payload: 'Maria' })}>Login</button>
+                        onClick={() => login(dispatch, 'joão')}>Login</button>
                     <button 
                         className="btn"
-                        onClick={() => dispatch({ type: 'numberAdd2' } )}>+2</button>
+                        onClick={() => numberAdd2(dispatch)}>+2</button>
                     <button 
                         className="btn"
                         onClick={() => dispatch({ type: 'numberMulti7' })}>*7</button>
