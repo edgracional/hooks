@@ -12,7 +12,7 @@ const initialState = {
 /* Criar um contexto usando o estado inicial, criar um AppContext e exportar */
 export const AppContext = React.createContext(initialState)
 
-/* Criar uma constate que irá recerber um componente funcional (props)*/
+/* Criar uma constate que irá recerber um componente funcional (props) */
 const Store = props => {
     const [state, setState] = useState(initialState)
 
